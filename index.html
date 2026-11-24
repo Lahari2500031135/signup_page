@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+</head>
+<body>
+
+<h2>Signup Form</h2>
+
+<form id="signupForm">
+    <input type="text" id="name" placeholder="Name"><br><br>
+
+    <input type="text" id="email" placeholder="Email"><br><br>
+
+    <input type="password" id="password" placeholder="Password"><br><br>
+
+    <input type="password" id="confirm" placeholder="Confirm Password"><br><br>
+
+    <button type="submit">Signup</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+document.getElementById("signupForm").onsubmit = function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm").value;
+
+    if (name == "" || email == "" ||
+        password == "" || confirm == "") {
+        alert("All fields are required");
+    }
+    else if (!email.includes("@")) {
+        alert("Invalid Email");
+    }
+    else if (password != confirm) {
+        alert("Passwords do not match");
+    }
+    else {
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+
+        document.getElementById("message").innerHTML =
+        "Signup Successful";
+    }
+};
+</script>
+
+</body>
+</html>
